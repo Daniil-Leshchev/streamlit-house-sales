@@ -1,7 +1,5 @@
 FROM python:3.11-alpine
 
-WORKDIR /app
-
 RUN apk add --no-cache \
     build-base \
     musl-dev \
@@ -9,9 +7,8 @@ RUN apk add --no-cache \
     libffi-dev \
     openblas-dev \
     linux-headers \
-    cmake \
-    gcc \
-    g++ \
+    cmake
+
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
