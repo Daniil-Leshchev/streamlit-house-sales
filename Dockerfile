@@ -13,7 +13,8 @@ RUN apk add --no-cache \
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir nvidia-pyindex \
-    && pip install --no-cache-dir -r requirements.txt
+    && pip install --no-cache-dir --extra-index-url https://pypi.ngc.nvidia.com nvidia-nccl-cu12 \
+    && pip install --no-cache-dir --extra-index-url https://pypi.ngc.nvidia.com -r requirements.txt
 
 COPY best_xgb.joblib ./
 COPY main.py ./
