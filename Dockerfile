@@ -8,8 +8,10 @@ RUN apk add --no-cache \
     python3-dev \
     libffi-dev \
     openblas-dev \
-    linux-headers
-
+    linux-headers \
+    cmake \
+    gcc \
+    g++ \
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
