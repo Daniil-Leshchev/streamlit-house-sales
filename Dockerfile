@@ -1,5 +1,7 @@
 FROM python:3.11-alpine
 
+WORKDIR /app
+
 RUN apk add --no-cache \
     build-base \
     musl-dev \
@@ -10,7 +12,8 @@ RUN apk add --no-cache \
     cmake
 
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir nvidia-pyindex \
+    && pip install --no-cache-dir -r requirements.txt
 
 COPY best_xgb.joblib ./
 COPY main.py ./
